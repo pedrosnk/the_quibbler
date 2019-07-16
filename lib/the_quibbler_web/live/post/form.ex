@@ -3,23 +3,32 @@ defmodule TheQuibblerWeb.PostLive.Form do
 
   def render(assigns) do
     ~L"""
-    <%= form_for @changeset, "#", [phx_change: :validate, phx_submit: :save], fn f -> %>
-    <%= label f, :title %>
-    <%= textarea f, :title %>
-    <%= error_tag f, :title %>
+    <%= form_for @changeset, "#", [phx_submit: :save], fn f -> %>
+    <div class="row">
+      <%= text_input f, :title, placeholder: "Title" %>
+    </div>
+    <div class="row">
+      <%= error_tag f, :title %>
+    </div>
 
-    <%= label f, :content %>
-    <%= textarea f, :content %>
-    <%= error_tag f, :content %>
+    <div class="row">
+      <div class="column column-50">
+        <div class="row">
+          <%= label f, :content %>
+        </div>
+        <div class="row">
+          <%= textarea f, :content %>
+        </div>
+        <%= error_tag f, :content %>
 
-    <%= label f, :content_html %>
-    <%= textarea f, :content_html %>
-    <%= error_tag f, :content_html %>
+      </div>
 
-    <%= label f, :published_at %>
-    <%= datetime_select f, :published_at %>
-    <%= error_tag f, :published_at %>
-
+      <div class="column column-50">
+        <%= label f, :content_html %>
+        <%= textarea f, :content_html %>
+        <%= error_tag f, :content_html %>
+      </div>
+    </div>
     <div>
     <%= submit "Save" %>
     </div>

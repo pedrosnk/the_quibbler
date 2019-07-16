@@ -21,15 +21,6 @@ defmodule TheQuibblerWeb.PostLive.Edit do
     """
   end
 
-  def handle_event("validate", %{"post" => params}, socket) do
-    changeset =
-      socket.assigns.post
-      |> Blog.change_post(params)
-      |> Map.put(:action, :update)
-
-    {:noreply, assign(socket, changeset: changeset)}
-  end
-
   def handle_event("save", %{"post" => params}, socket) do
     case Blog.update_post(socket.assigns.post, params) do
       {:ok, post} ->

@@ -12,21 +12,12 @@ defmodule TheQuibblerWeb.PostLive.New do
 
   def render(assigns) do
     ~L"""
-    <h1>New Postt</h1>
+    <h1>New Post</h1>
     <%# PostView.render("form.html", assigns) %>
     <%= PostLive.Form.render(assigns) %>
 
     <span><%= link "Back", to: Routes.live_path(@socket, PostLive.Index) %></span>
     """
-  end
-
-  def handle_event("validate", %{"post" => params}, socket) do
-    changeset =
-      %Post{}
-      |> Blog.change_post(params)
-      |> Map.put(:action, :insert)
-
-    {:noreply, assign(socket, changeset: changeset)}
   end
 
   def handle_event("save", %{"post" => params}, socket) do
