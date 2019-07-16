@@ -22,6 +22,7 @@ defmodule TheQuibblerWeb.Router do
 
     live "/posts", PostLive.Index
     live "/posts/new", PostLive.New
+    live "/posts/:id/edit", PostLive.Edit
   end
 
   # Other scopes may use custom stacks.

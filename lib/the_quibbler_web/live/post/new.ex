@@ -1,7 +1,6 @@
 defmodule TheQuibblerWeb.PostLive.New do
-  use Phoenix.LiveView
+  use TheQuibblerWeb, :live
 
-  alias TheQuibblerWeb.Router.Helpers, as: Routes
   alias TheQuibblerWeb.PostLive
   alias TheQuibblerWeb.PostView
   alias TheQuibbler.Blog.Post
@@ -11,7 +10,15 @@ defmodule TheQuibblerWeb.PostLive.New do
     {:ok, assign(socket, changeset: Blog.change_post(%Post{}))}
   end
 
-  def render(assigns), do: PostView.render("new.html", assigns)
+  def render(assigns) do
+    ~L"""
+    <h1>New Postt</h1>
+    <%# PostView.render("form.html", assigns) %>
+    <%= PostLive.Form.render(assigns) %>
+
+    <span><%= link "Back", to: Routes.live_path(@socket, PostLive.Index) %></span>
+    """
+  end
 
   def handle_event("validate", %{"post" => params}, socket) do
     changeset =

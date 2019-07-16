@@ -33,7 +33,7 @@ defmodule TheQuibblerWeb.PostLive.Index do
 
       <td>
         <%#= link "Show", to: Routes.post_path(@socket, :show, post) %>
-        <%#= link "Edit", to: Routes.post_path(@socket, :edit, post) %>
+        <%= link "Edit", to: Routes.live_path(@socket, PostLive.Edit, post) %>
         <%= link "Delete", to: "#", "phx-click": "delete", "phx-value": post.id %>
       </td>
     </tr>

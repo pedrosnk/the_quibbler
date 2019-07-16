@@ -53,6 +53,7 @@ defmodule TheQuibblerWeb do
       use Phoenix.HTML
 
       import Phoenix.LiveView
+      import TheQuibblerWeb.ErrorHelpers
       alias TheQuibblerWeb.Router.Helpers, as: Routes
     end
   end
