@@ -7,7 +7,7 @@ defmodule TheQuibblerWeb.PostLive.New do
   alias TheQuibbler.Blog
 
   def mount(_session, socket) do
-    {:ok, assign(socket, changeset: Blog.change_post(%Post{}))}
+    {:ok, assign(socket, changeset: Blog.change_post(%Post{}), content_html: "")}
   end
 
   def render(assigns) do
@@ -15,7 +15,6 @@ defmodule TheQuibblerWeb.PostLive.New do
     <h1>New Post</h1>
     <%# PostView.render("form.html", assigns) %>
     <%= PostLive.Form.render(assigns) %>
-
     <span><%= link "Back", to: Routes.live_path(@socket, PostLive.Index) %></span>
     """
   end
@@ -25,14 +24,27 @@ defmodule TheQuibblerWeb.PostLive.New do
       {:ok, post} ->
         socket =
           socket
-          # chaneg to show
           |> put_flash(:info, "Post created")
           |> redirect(to: Routes.live_path(socket, PostLive.Index))
 
-        {:noreply, socket}
+        {:stop, socket}
 
       {:error, %Ecto.Changeset{} = changeset} ->
         {:noreply, assign(socket, changeset: changeset)}
     end
+  end
+
+  def handle_event(
+        "change_text",
+        %{"post" => %{"content" => content}},
+        %{assigns: %{changeset: changeset}} = socket
+      ) do
+    {_status, content_html, _errors} = Earmark.as_html(content)
+
+    changeset =
+      Blog.change_post(changeset.data, %{"content" => content, "content_html" => content_html})
+
+    IO.puts(inspect(changeset))
+    {:noreply, assign(socket, changeset: changeset, content_html: content_html)}
   end
 end

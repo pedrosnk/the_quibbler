@@ -4,11 +4,8 @@ defmodule TheQuibblerWeb.PostLive.Edit do
   alias TheQuibbler.Blog
   alias TheQuibblerWeb.PostLive
 
-  def mount(%{path_params: %{"id" => id}}, socket) do
-    post = Blog.get_post!(id)
-    changeset = Blog.change_post(post)
-
-    {:ok, assign(socket, %{post: post, changeset: changeset})}
+  def mount(_session, socket) do
+    {:ok, assign(socket, content_html: "")}
   end
 
   def render(assigns) do
@@ -19,6 +16,19 @@ defmodule TheQuibblerWeb.PostLive.Edit do
 
     <span><%= link "Back", to: Routes.live_path(@socket, PostLive.Index) %></span>
     """
+  end
+
+  def handle_params(%{"id" => id}, _uri, socket) do
+    case Blog.get_post(id) do
+      nil ->
+        {:noreply, redirect(socket, to: Routes.path(socket, "/404"))}
+
+      post ->
+        changeset = Blog.change_post(post)
+
+        {:noreply,
+         assign(socket, %{post: post, changeset: changeset, content_html: post.content_html})}
+    end
   end
 
   def handle_event("save", %{"post" => params}, socket) do
