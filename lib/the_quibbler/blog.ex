@@ -31,8 +31,8 @@ defmodule TheQuibbler.Blog do
       iex> get_post!(123)
       %Post{}
 
-      iex> get_post!(456)
-      ** (Ecto.NoResultsError)
+      iex> get_post(456)
+      nil
 
   """
   def get_post(id), do: Repo.get(Post, id)

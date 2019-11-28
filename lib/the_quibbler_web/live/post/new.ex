@@ -44,7 +44,6 @@ defmodule TheQuibblerWeb.PostLive.New do
     changeset =
       Blog.change_post(changeset.data, %{"content" => content, "content_html" => content_html})
 
-    IO.puts(inspect(changeset))
     {:noreply, assign(socket, changeset: changeset, content_html: content_html)}
   end
 end

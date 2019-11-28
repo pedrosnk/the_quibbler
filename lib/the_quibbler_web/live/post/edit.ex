@@ -40,4 +40,17 @@ defmodule TheQuibblerWeb.PostLive.Edit do
          |> redirect(to: Routes.live_path(socket, PostLive.Index))}
     end
   end
+
+  def handle_event(
+        "change_text",
+        %{"post" => %{"content" => content}},
+        %{assigns: %{changeset: changeset}} = socket
+      ) do
+    {_status, content_html, _errors} = Earmark.as_html(content)
+
+    changeset =
+      Blog.change_post(changeset.data, %{"content" => content, "content_html" => content_html})
+
+    {:noreply, assign(socket, changeset: changeset, content_html: content_html)}
+  end
 end

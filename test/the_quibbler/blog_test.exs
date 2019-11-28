@@ -6,8 +6,18 @@ defmodule TheQuibbler.BlogTest do
   describe "posts" do
     alias TheQuibbler.Blog.Post
 
-    @valid_attrs %{content: "some content", content_html: "some content_html", published_at: ~N[2010-04-17 14:00:00], title: "some title"}
-    @update_attrs %{content: "some updated content", content_html: "some updated content_html", published_at: ~N[2011-05-18 15:01:01], title: "some updated title"}
+    @valid_attrs %{
+      content: "some content",
+      content_html: "some content_html",
+      published_at: ~N[2010-04-17 14:00:00],
+      title: "some title"
+    }
+    @update_attrs %{
+      content: "some updated content",
+      content_html: "some updated content_html",
+      published_at: ~N[2011-05-18 15:01:01],
+      title: "some updated title"
+    }
     @invalid_attrs %{content: nil, content_html: nil, published_at: nil, title: nil}
 
     def post_fixture(attrs \\ %{}) do
@@ -24,9 +34,9 @@ defmodule TheQuibbler.BlogTest do
       assert Blog.list_posts() == [post]
     end
 
-    test "get_post!/1 returns the post with given id" do
+    test "get_post/1 returns the post with given id" do
       post = post_fixture()
-      assert Blog.get_post!(post.id) == post
+      assert Blog.get_post(post.id) == post
     end
 
     test "create_post/1 with valid data creates a post" do
@@ -53,13 +63,13 @@ defmodule TheQuibbler.BlogTest do
     test "update_post/2 with invalid data returns error changeset" do
       post = post_fixture()
       assert {:error, %Ecto.Changeset{}} = Blog.update_post(post, @invalid_attrs)
-      assert post == Blog.get_post!(post.id)
+      assert post == Blog.get_post(post.id)
     end
 
     test "delete_post/1 deletes the post" do
       post = post_fixture()
       assert {:ok, %Post{}} = Blog.delete_post(post)
-      assert_raise Ecto.NoResultsError, fn -> Blog.get_post!(post.id) end
+      assert Blog.get_post(post.id) == nil
     end
 
     test "change_post/1 returns a post changeset" do
