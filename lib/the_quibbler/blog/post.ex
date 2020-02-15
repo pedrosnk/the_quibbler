@@ -2,6 +2,8 @@ defmodule TheQuibbler.Blog.Post do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @primary_key {:id, :binary_id, autogenerate: true}
+
   schema "posts" do
     field :content, :string
     field :content_html, :string
