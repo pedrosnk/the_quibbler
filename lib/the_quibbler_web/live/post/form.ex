@@ -1,4 +1,5 @@
 defmodule TheQuibblerWeb.PostLive.Form do
+  use Phoenix.LiveComponent
   use TheQuibblerWeb, :live
 
   def render(assigns) do

@@ -34,7 +34,7 @@ defmodule TheQuibblerWeb.PostLive.Index do
       <td>
         <%#= link "Show", to: Routes.post_path(@socket, :show, post) %>
         <%= link "Edit", to: Routes.live_path(@socket, PostLive.Edit, post) %>
-        <%= link "Delete", to: "#", "phx-click": "delete", "phx-value": post.id %>
+        <%= link "Delete", to: "#", "phx-click": "delete", "phx-value-id": post.id %>
       </td>
     </tr>
     <% end %>
@@ -49,8 +49,8 @@ defmodule TheQuibblerWeb.PostLive.Index do
     assign(socket, posts: Blog.list_posts())
   end
 
-  def handle_event("delete", id, socket) do
-    post = Blog.get_post!(id)
+  def handle_event("delete", %{"id" => id}, socket) do
+    post = Blog.get_post(id)
 
     {:ok, _user} = Blog.delete_post(post)
     {:noreply, fetch(socket)}

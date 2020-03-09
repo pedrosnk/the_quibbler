@@ -17,6 +17,7 @@ defmodule TheQuibbler.Blog do
       [%Post{}, ...]
 
   """
+  @spec list_posts() :: Post.t()
   def list_posts do
     Repo.all(Post)
   end
@@ -28,7 +29,7 @@ defmodule TheQuibbler.Blog do
 
   ## Examples
 
-      iex> get_post!(123)
+      iex> get_post(123)
       %Post{}
 
       iex> get_post(456)

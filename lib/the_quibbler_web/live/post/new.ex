@@ -13,7 +13,6 @@ defmodule TheQuibblerWeb.PostLive.New do
   def render(assigns) do
     ~L"""
     <h1>New Post</h1>
-    <%# PostView.render("form.html", assigns) %>
     <%= PostLive.Form.render(assigns) %>
     <span><%= link "Back", to: Routes.live_path(@socket, PostLive.Index) %></span>
     """
