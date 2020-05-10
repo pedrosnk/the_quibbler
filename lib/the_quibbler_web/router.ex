@@ -4,10 +4,10 @@ defmodule TheQuibblerWeb.Router do
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
-    plug :fetch_flash
+    plug :fetch_live_flash
+    plug :put_root_layout, {TheQuibblerWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
-    plug :put_live_layout, {TheQuibblerWeb.LayoutView, :app}
   end
 
   pipeline :api do

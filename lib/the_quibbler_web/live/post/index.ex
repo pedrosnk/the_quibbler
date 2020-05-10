@@ -1,10 +1,10 @@
 defmodule TheQuibblerWeb.PostLive.Index do
-  use TheQuibblerWeb, :live
+  use TheQuibblerWeb, :live_view
 
   alias TheQuibblerWeb.PostLive
   alias TheQuibbler.Blog
 
-  def mount(_session, socket) do
+  def mount(_params, _session, socket) do
     {:ok, fetch(socket)}
   end
 
@@ -46,7 +46,7 @@ defmodule TheQuibblerWeb.PostLive.Index do
   end
 
   defp fetch(socket) do
-    assign(socket, posts: Blog.list_posts())
+    assign(socket, :posts, Blog.list_posts())
   end
 
   def handle_event("delete", %{"id" => id}, socket) do

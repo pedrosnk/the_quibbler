@@ -10,6 +10,7 @@ defmodule TheQuibbler.Application do
     children = [
       # Start the Ecto repository
       TheQuibbler.Repo,
+      {Phoenix.PubSub, [name: TheQuibbler.PubSub, adapter: Phoenix.PubSub.PG2]},
       # Start the endpoint when the application starts
       TheQuibblerWeb.Endpoint
       # Starts a worker by calling: TheQuibbler.Worker.start_link(arg)

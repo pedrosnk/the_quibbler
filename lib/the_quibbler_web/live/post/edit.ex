@@ -33,11 +33,11 @@ defmodule TheQuibblerWeb.PostLive.Edit do
 
   def handle_event("save", %{"post" => params}, socket) do
     case Blog.update_post(socket.assigns.post, params) do
-      {:ok, post} ->
-        {:stop,
+      {:ok, _post} ->
+        {:noreply,
          socket
          |> put_flash(:info, "Post updated successfully.")
-         |> redirect(to: Routes.live_path(socket, PostLive.Index))}
+         |> push_redirect(to: Routes.live_path(socket, PostLive.Index))}
     end
   end
 

@@ -15,7 +15,7 @@ config :the_quibbler, TheQuibblerWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "9wMprGeqVPWKMmwpNTuK9eqoUiUAGDrOjXlELg9Ji+ecJa4HYuVRpav+TTdIQHbp",
   render_errors: [view: TheQuibblerWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: TheQuibbler.PubSub, adapter: Phoenix.PubSub.PG2],
+  pubsub_server: TheQuibbler.PubSub,
   live_view: [
     signing_salt: "dz9mi6F7RfjA7pGhV9IRHngRqsA5ioVgL5Tr1yCaI+g0TebTFKeo56dgDD1pxZKn"
   ]
