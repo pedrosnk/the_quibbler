@@ -5,7 +5,7 @@ defmodule TheQuibblerWeb.PostLive.Index do
   alias TheQuibbler.Blog
 
   def mount(_params, _session, socket) do
-    {:ok, fetch(socket)}
+    {:ok, socket, temporary_assigns: [posts: fetch()]}
   end
 
   def render(assigns) do
@@ -45,14 +45,14 @@ defmodule TheQuibblerWeb.PostLive.Index do
     """
   end
 
-  defp fetch(socket) do
-    assign(socket, :posts, Blog.list_posts())
+  defp fetch() do
+    Blog.list_posts()
   end
 
   def handle_event("delete", %{"id" => id}, socket) do
     post = Blog.get_post(id)
 
     {:ok, _user} = Blog.delete_post(post)
-    {:noreply, fetch(socket)}
+    {:noreply, assign(socket, :posts, fetch())}
   end
 end

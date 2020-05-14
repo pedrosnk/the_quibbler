@@ -1,5 +1,5 @@
 defmodule TheQuibblerWeb.PostLive.Edit do
-  use TheQuibblerWeb, :live
+  use TheQuibblerWeb, :live_view
 
   alias TheQuibbler.Blog
   alias TheQuibblerWeb.PostLive

@@ -48,23 +48,21 @@ defmodule TheQuibblerWeb do
     end
   end
 
+  def admin_live_view do
+    quote do
+      use Phoenix.LiveView,
+        layout: {TheQuibblerWeb.LayoutView, "live_admin.html"}
+
+      unquote(view_helpers())
+    end
+  end
+
   def live_view do
     quote do
       use Phoenix.LiveView,
         layout: {TheQuibblerWeb.LayoutView, "live.html"}
 
       unquote(view_helpers())
-    end
-  end
-
-  def live do
-    quote do
-      use Phoenix.LiveView
-      use Phoenix.HTML
-
-      import Phoenix.LiveView
-      import TheQuibblerWeb.ErrorHelpers
-      alias TheQuibblerWeb.Router.Helpers, as: Routes
     end
   end
 

@@ -10,6 +10,16 @@ defmodule TheQuibblerWeb.Router do
     plug :put_secure_browser_headers
   end
 
+  pipeline :admin do
+    plug :accepts, ["html"]
+    plug :fetch_session
+    plug :fetch_live_flash
+    plug :put_root_layout, {TheQuibblerWeb.LayoutView, :admin}
+    plug :protect_from_forgery
+    plug :put_secure_browser_headers
+    plug :authenticate
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
@@ -24,8 +34,17 @@ defmodule TheQuibblerWeb.Router do
     live "/posts/:id", PostLive.Edit
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", TheQuibblerWeb do
-  #   pipe_through :api
-  # end
+  scope "/admin", TheQuibblerWeb do
+    pipe_through :admin
+
+    live "/", AdminLive.Index
+
+    live "/posts", PostLive.Index
+    live "/posts/new", PostLive.New
+    live "/posts/:id", PostLive.Edit
+  end
+
+  def authenticate(conn, _opts) do
+    Plug.Conn.put_session(conn, :current_user, "Pedro")
+  end
 end
