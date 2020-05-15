@@ -34,6 +34,12 @@ defmodule TheQuibbler.BlogTest do
       assert Blog.list_posts() == [post]
     end
 
+    test "count_posts/0 returns the posts counts" do
+      assert {:ok, %Post{}} = Blog.create_post(@valid_attrs)
+      assert {:ok, %Post{}} = Blog.create_post(@valid_attrs)
+      assert 2 = Blog.count_posts()
+    end
+
     test "get_post/1 returns the post with given id" do
       post = post_fixture()
       assert Blog.get_post(post.id) == post

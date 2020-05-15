@@ -22,6 +22,11 @@ defmodule TheQuibbler.Blog do
     Repo.all(Post)
   end
 
+  @spec count_posts() :: pos_integer
+  def count_posts() do
+    Repo.one(from p in Post, select: count(1))
+  end
+
   @doc """
   Gets a single post.
 
