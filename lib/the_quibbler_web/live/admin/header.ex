@@ -1,5 +1,9 @@
 defmodule TheQuibblerWeb.AdminLive.Header do
-  use TheQuibblerWeb, :live_component
+  use TheQuibblerWeb, :admin_live_view
+
+  def mount(_params, %{"current_user" => current_user} = _session, socket) do
+    {:ok, assign(socket, :current_user, current_user)}
+  end
 
   def render(assigns) do
     ~L"""

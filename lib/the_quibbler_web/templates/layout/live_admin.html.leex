@@ -1,4 +1,4 @@
-<%= live_component(@socket, TheQuibblerWeb.AdminLive.Header, current_user: @current_user) %>
+<%= live_render(@socket, TheQuibblerWeb.AdminLive.Header, id: :header) %>
 <main role="main" class="container">
   <p class="alert alert-info" role="alert"
     phx-click="lv:clear-flash"
