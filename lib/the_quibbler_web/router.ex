@@ -28,10 +28,6 @@ defmodule TheQuibblerWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-
-    live "/posts", PostLive.Index
-    live "/posts/new", PostLive.New
-    live "/posts/:id", PostLive.Edit
   end
 
   scope "/admin", TheQuibblerWeb, as: :admin do
@@ -39,9 +35,9 @@ defmodule TheQuibblerWeb.Router do
 
     live "/", AdminLive.Index, as: :index
 
-    live "/posts", PostLive.Index, :index
-    live "/posts/new", PostLive.New, :new
-    live "/posts/:id", PostLive.Edit, :edit
+    live "/posts", Admin.PostLive.Index, :index
+    live "/posts/new", Admin.PostLive.New, :new
+    live "/posts/:id", Admin.PostLive.Edit, :edit
   end
 
   def authenticate(conn, _opts) do

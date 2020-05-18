@@ -1,7 +1,7 @@
-defmodule TheQuibblerWeb.PostLive.New do
+defmodule TheQuibblerWeb.Admin.PostLive.New do
   use TheQuibblerWeb, :admin_live_view
 
-  alias TheQuibblerWeb.PostLive
+  alias TheQuibblerWeb.Admin.PostLive
   alias TheQuibblerWeb.PostView
   alias TheQuibbler.Blog.Post
   alias TheQuibbler.Blog

@@ -1,8 +1,8 @@
-defmodule TheQuibblerWeb.PostLive.Edit do
+defmodule TheQuibblerWeb.Admin.PostLive.Edit do
   use TheQuibblerWeb, :admin_live_view
 
   alias TheQuibbler.Blog
-  alias TheQuibblerWeb.PostLive
+  alias TheQuibblerWeb.Admin.PostLive
 
   def mount(_session, socket) do
     {:ok, assign(socket, content_html: "")}
@@ -12,7 +12,7 @@ defmodule TheQuibblerWeb.PostLive.Edit do
     ~L"""
     <h1>Edit Post</h1>
     <%# PostView.render("form.html", assigns) %>
-    <%= PostLive.Form.render(assigns) %>
+    <%= Admin.PostLive.Form.render(assigns) %>
 
     <span><%= live_redirect "Back", to: Routes.admin_post_index_path(@socket, :index) %></span>
     """

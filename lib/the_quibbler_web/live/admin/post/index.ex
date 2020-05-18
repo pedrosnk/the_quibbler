@@ -1,7 +1,7 @@
-defmodule TheQuibblerWeb.PostLive.Index do
+defmodule TheQuibblerWeb.Admin.PostLive.Index do
   use TheQuibblerWeb, :admin_live_view
 
-  alias TheQuibblerWeb.PostLive
+  alias TheQuibblerWeb.Admin.PostLive
   alias TheQuibbler.Blog
 
   def mount(_params, _session, socket) do
@@ -40,7 +40,7 @@ defmodule TheQuibblerWeb.PostLive.Index do
     </tbody>
     </table>
 
-    <span><%= live_redirect "New Post", to: Routes.admin_post_new_path(@socket, :new) %></span>
+    <span><%= live_redirect "New Post", to: Routes.admin_post_index_path(@socket, :index) %></span>
     """
   end
 

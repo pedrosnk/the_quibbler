@@ -1,4 +1,4 @@
-defmodule TheQuibblerWeb.PostLive.Form do
+defmodule TheQuibblerWeb.Admin.PostLive.Form do
   use TheQuibblerWeb, :live_component
 
   def render(assigns) do
