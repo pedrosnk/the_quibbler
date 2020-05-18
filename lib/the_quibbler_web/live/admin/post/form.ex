@@ -12,6 +12,13 @@ defmodule TheQuibblerWeb.Admin.PostLive.Form do
     </div>
 
     <div class="row">
+      <%= text_input f, :slug, placeholder: "Slug", readonly: true%>
+    </div>
+    <div class="row">
+      <%= error_tag f, :slug %>
+    </div>
+
+    <div class="row">
       <div class="column column-50">
         <div class="row">
           <%= label f, :content %>

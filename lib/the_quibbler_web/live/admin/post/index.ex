@@ -40,7 +40,7 @@ defmodule TheQuibblerWeb.Admin.PostLive.Index do
     </tbody>
     </table>
 
-    <span><%= live_redirect "New Post", to: Routes.admin_post_index_path(@socket, :index) %></span>
+    <span><%= live_redirect "New Post", to: Routes.admin_post_new_path(@socket, :new) %></span>
     """
   end
 
