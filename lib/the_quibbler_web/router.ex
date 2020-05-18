@@ -34,14 +34,14 @@ defmodule TheQuibblerWeb.Router do
     live "/posts/:id", PostLive.Edit
   end
 
-  scope "/admin", TheQuibblerWeb do
+  scope "/admin", TheQuibblerWeb, as: :admin do
     pipe_through :admin
 
-    live "/", AdminLive.Index
+    live "/", AdminLive.Index, as: :index
 
-    live "/posts", PostLive.Index
-    live "/posts/new", PostLive.New
-    live "/posts/:id", PostLive.Edit
+    live "/posts", PostLive.Index, :index
+    live "/posts/new", PostLive.New, :new
+    live "/posts/:id", PostLive.Edit, :edit
   end
 
   def authenticate(conn, _opts) do

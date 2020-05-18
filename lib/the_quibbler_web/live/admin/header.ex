@@ -10,9 +10,7 @@ defmodule TheQuibblerWeb.AdminLive.Header do
     <header class="container-full">
       <div class='navbar'>
         <ul>
-          <li><a class="active" href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><%= live_patch "Posts", to: Routes.admin_post_index_path(@socket, :index) %></li>
         </ul>
       </div><Paste>
     </header>

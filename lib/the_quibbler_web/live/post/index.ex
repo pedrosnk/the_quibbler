@@ -1,5 +1,5 @@
 defmodule TheQuibblerWeb.PostLive.Index do
-  use TheQuibblerWeb, :live_view
+  use TheQuibblerWeb, :admin_live_view
 
   alias TheQuibblerWeb.PostLive
   alias TheQuibbler.Blog
@@ -32,8 +32,7 @@ defmodule TheQuibblerWeb.PostLive.Index do
       <td><%= post.published_at %></td>
 
       <td>
-        <%#= link "Show", to: Routes.post_path(@socket, :show, post) %>
-        <%= link "Edit", to: Routes.live_path(@socket, PostLive.Edit, post) %>
+        <%= live_redirect "Edit", to: Routes.admin_post_edit_path(@socket, :edit, post) %>
         <%= link "Delete", to: "#", "phx-click": "delete", "phx-value-id": post.id %>
       </td>
     </tr>
@@ -41,7 +40,7 @@ defmodule TheQuibblerWeb.PostLive.Index do
     </tbody>
     </table>
 
-    <span><%= link "New Post", to: Routes.live_path(@socket, PostLive.New) %></span>
+    <span><%= live_redirect "New Post", to: Routes.admin_post_new_path(@socket, :new) %></span>
     """
   end
 
@@ -53,6 +52,10 @@ defmodule TheQuibblerWeb.PostLive.Index do
     post = Blog.get_post(id)
 
     {:ok, _user} = Blog.delete_post(post)
-    {:noreply, assign(socket, :posts, fetch())}
+
+    {:noreply,
+     socket
+     |> put_flash(:info, "Post deleted")
+     |> assign(:posts, fetch())}
   end
 end

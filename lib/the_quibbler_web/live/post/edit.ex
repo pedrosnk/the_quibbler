@@ -1,5 +1,5 @@
 defmodule TheQuibblerWeb.PostLive.Edit do
-  use TheQuibblerWeb, :live_view
+  use TheQuibblerWeb, :admin_live_view
 
   alias TheQuibbler.Blog
   alias TheQuibblerWeb.PostLive
@@ -14,7 +14,7 @@ defmodule TheQuibblerWeb.PostLive.Edit do
     <%# PostView.render("form.html", assigns) %>
     <%= PostLive.Form.render(assigns) %>
 
-    <span><%= link "Back", to: Routes.live_path(@socket, PostLive.Index) %></span>
+    <span><%= live_redirect "Back", to: Routes.admin_post_index_path(@socket, :index) %></span>
     """
   end
 
@@ -37,7 +37,7 @@ defmodule TheQuibblerWeb.PostLive.Edit do
         {:noreply,
          socket
          |> put_flash(:info, "Post updated successfully.")
-         |> push_redirect(to: Routes.live_path(socket, PostLive.Index))}
+         |> push_redirect(to: Routes.admin_post_index_path(socket, :index))}
     end
   end
 
