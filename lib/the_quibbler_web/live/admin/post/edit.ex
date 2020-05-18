@@ -12,7 +12,7 @@ defmodule TheQuibblerWeb.Admin.PostLive.Edit do
     ~L"""
     <h1>Edit Post</h1>
     <%# PostView.render("form.html", assigns) %>
-    <%= Admin.PostLive.Form.render(assigns) %>
+    <%= live_component @socket, PostLive.Form, content_html: @content_html, changeset: @changeset %>
 
     <span><%= live_redirect "Back", to: Routes.admin_post_index_path(@socket, :index) %></span>
     """
@@ -43,13 +43,17 @@ defmodule TheQuibblerWeb.Admin.PostLive.Edit do
 
   def handle_event(
         "change_text",
-        %{"post" => %{"content" => content}},
+        %{"post" => post},
         %{assigns: %{changeset: changeset}} = socket
       ) do
-    {_status, content_html, _errors} = Earmark.as_html(content)
+    {_status, content_html, _errors} = Earmark.as_html(post["content"])
 
-    changeset =
-      Blog.change_post(changeset.data, %{"content" => content, "content_html" => content_html})
+    post =
+      post
+      |> put_in(["content_html"], content_html)
+      |> put_in(["title"], post["title"])
+
+    changeset = Blog.change_post(changeset.data, post)
 
     {:noreply, assign(socket, changeset: changeset, content_html: content_html)}
   end
