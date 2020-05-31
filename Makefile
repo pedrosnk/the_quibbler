@@ -14,6 +14,3 @@ setup: dev_db
 	mix deps.get && \
 	mix ecto.setup && \
 	cd ./assets && yarn install
-
-run:
-	iex -S mix phx.server
