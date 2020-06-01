@@ -40,6 +40,9 @@ defmodule TheQuibblerWeb.Admin.PostLive.Form do
       </div>
     </div>
     <div>
+    <%= if @changeset.data.id != nil do %>
+      <button phx-click="publish">publish</button>
+    <% end %>
     <%= submit "Save" %>
     </div>
     <% end %>

@@ -27,6 +27,13 @@ defmodule TheQuibbler.Blog do
     Repo.one(from p in Post, select: count(1))
   end
 
+  @spec publish(post :: Post.t()) :: Post.t()
+  def publish(post) do
+    post
+    |> Post.changeset(%{published_at: NaiveDateTime.utc_now()})
+    |> Repo.update()
+  end
+
   @doc """
   Gets a single post.
 

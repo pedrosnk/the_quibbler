@@ -41,6 +41,13 @@ defmodule TheQuibblerWeb.Admin.PostLive.Edit do
     end
   end
 
+  def handle_event("publish", _value, socket) do
+    %{assigns: %{post: post}} = socket
+    post = Blog.publish(post)
+
+    put_flash(socket, :info, "Post published")
+  end
+
   def handle_event(
         "change_text",
         %{"post" => post},

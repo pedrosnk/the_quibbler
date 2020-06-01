@@ -9,13 +9,12 @@ defmodule TheQuibbler.BlogTest do
     @valid_attrs %{
       content: "some content",
       content_html: "some content_html",
-      published_at: ~N[2010-04-17 14:00:00],
-      title: "some title"
+      title: "some title",
+      slug: "some-title"
     }
     @update_attrs %{
       content: "some updated content",
       content_html: "some updated content_html",
-      published_at: ~N[2011-05-18 15:01:01],
       title: "some updated title"
     }
     @invalid_attrs %{content: nil, content_html: nil, published_at: nil, title: nil}
@@ -27,6 +26,18 @@ defmodule TheQuibbler.BlogTest do
         |> Blog.create_post()
 
       post
+    end
+
+    test "publis/1 populates the publsh date of the post" do
+      assert {
+               :ok,
+               post = %Post{published_at: nil}
+             } = Blog.create_post(@valid_attrs)
+
+      assert {
+               :ok,
+               %Post{published_at: %NaiveDateTime{}}
+             } = Blog.publish(post)
     end
 
     test "list_posts/0 returns all posts" do
@@ -49,7 +60,6 @@ defmodule TheQuibbler.BlogTest do
       assert {:ok, %Post{} = post} = Blog.create_post(@valid_attrs)
       assert post.content == "some content"
       assert post.content_html == "some content_html"
-      assert post.published_at == ~N[2010-04-17 14:00:00]
       assert post.title == "some title"
     end
 
@@ -62,7 +72,6 @@ defmodule TheQuibbler.BlogTest do
       assert {:ok, %Post{} = post} = Blog.update_post(post, @update_attrs)
       assert post.content == "some updated content"
       assert post.content_html == "some updated content_html"
-      assert post.published_at == ~N[2011-05-18 15:01:01]
       assert post.title == "some updated title"
     end
 
