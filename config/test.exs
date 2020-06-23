@@ -1,16 +1,16 @@
 use Mix.Config
 
 # Configure your database
-config :the_quibbler, TheQuibbler.Repo,
+config :scroll, Scroll.Repo,
   username: "postgres",
   password: "postgres",
-  database: "the_quibbler_test",
+  database: "scroll_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
-config :the_quibbler, TheQuibblerWeb.Endpoint,
+config :scroll, ScrollWeb.Endpoint,
   http: [port: 4002],
   server: false
 

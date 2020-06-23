@@ -5,7 +5,7 @@
 # Inside the script, you can read and write to any of your
 # repositories directly:
 #
-#     TheQuibbler.Repo.insert!(%TheQuibbler.SomeSchema{})
+#     Scroll.Repo.insert!(%Scroll.SomeSchema{})
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.

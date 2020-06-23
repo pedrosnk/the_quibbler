@@ -7,15 +7,15 @@
 # General application configuration
 use Mix.Config
 
-config :the_quibbler,
-  ecto_repos: [TheQuibbler.Repo]
+config :scroll,
+  ecto_repos: [Scroll.Repo]
 
 # Configures the endpoint
-config :the_quibbler, TheQuibblerWeb.Endpoint,
+config :scroll, ScrollWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "9wMprGeqVPWKMmwpNTuK9eqoUiUAGDrOjXlELg9Ji+ecJa4HYuVRpav+TTdIQHbp",
-  render_errors: [view: TheQuibblerWeb.ErrorView, accepts: ~w(html json)],
-  pubsub_server: TheQuibbler.PubSub,
+  render_errors: [view: ScrollWeb.ErrorView, accepts: ~w(html json)],
+  pubsub_server: Scroll.PubSub,
   live_view: [
     signing_salt: "dz9mi6F7RfjA7pGhV9IRHngRqsA5ioVgL5Tr1yCaI+g0TebTFKeo56dgDD1pxZKn"
   ]

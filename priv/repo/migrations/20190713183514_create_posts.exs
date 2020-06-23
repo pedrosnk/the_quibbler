@@ -1,4 +1,4 @@
-defmodule TheQuibbler.Repo.Migrations.CreatePosts do
+defmodule Scroll.Repo.Migrations.CreatePosts do
   use Ecto.Migration
 
   def change do

@@ -1,10 +1,10 @@
 use Mix.Config
 
 # Configure your database
-config :the_quibbler, TheQuibbler.Repo,
+config :scroll, Scroll.Repo,
   username: "postgres",
   password: "postgres",
-  database: "the_quibbler_dev",
+  database: "scroll_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
@@ -15,7 +15,7 @@ config :the_quibbler, TheQuibbler.Repo,
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
-config :the_quibbler, TheQuibblerWeb.Endpoint,
+config :scroll, ScrollWeb.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
@@ -55,14 +55,14 @@ config :the_quibbler, TheQuibblerWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :the_quibbler, TheQuibblerWeb.Endpoint,
+config :scroll, ScrollWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/the_quibbler_web/{live,views}/.*(ex)$",
-      ~r"lib/the_quibbler_web/templates/.*(eex)$",
-      ~r"lib/the_quibbler_web/live/.*(ex)$"
+      ~r"lib/scroll_web/{live,views}/.*(ex)$",
+      ~r"lib/scroll_web/templates/.*(eex)$",
+      ~r"lib/scroll_web/live/.*(ex)$"
     ]
   ]
 

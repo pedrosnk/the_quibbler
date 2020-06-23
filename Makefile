@@ -1,5 +1,5 @@
 
-DB_NAME=the_quibbler_db
+DB_NAME=scroll_db
 
 run:
 	iex -S mix phx.server
@@ -10,7 +10,7 @@ start_db:
 stop_db:
 	docker stop $(DB_NAME)
 
-setup: dev_db
+setup: start_db
 	mix deps.get && \
 	mix ecto.setup && \
 	cd ./assets && yarn install

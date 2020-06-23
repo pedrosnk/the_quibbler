@@ -1,4 +1,4 @@
-defmodule TheQuibbler.Repo.Migrations.AddSlugToPost do
+defmodule Scroll.Repo.Migrations.AddSlugToPost do
   use Ecto.Migration
 
   def change do
