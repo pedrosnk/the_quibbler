@@ -34,13 +34,13 @@ defmodule Scroll.MixProject do
   defp deps do
     [
       {:phoenix, "~> 1.5.1"},
-      {:phoenix_live_view, "~> 0.13.2"},
+      {:phoenix_live_view, "~> 0.14.1"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:phoenix_ecto, "~> 4.1"},
       {:ecto_sql, "~> 3.4"},
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 2.13"},
-      {:floki, "~> 0.26.0", only: :test},
+      {:floki, "~> 0.27.0", only: :test},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
