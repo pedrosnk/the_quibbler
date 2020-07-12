@@ -6,31 +6,22 @@ body {
   margin: 0;
 }
 
-.navbar {
-  margin-bottom: 10px;
+header nav {
+  height: 2em;
+  background-color: #563d7c;
 }
 
-.navbar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: floralwhite;
+header nav a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
 }
 
-.navbar li {
-    float: left;
-    margin-bottom: 0;
+header nav a:hover {
+  color: rgb(203, 189, 226);
 }
 
-.navbar li a {
-    display: block;
-    color: gray;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-.navbar li a:hover {
-    background-color: #ab5dda;
+header nav li {
+  float: left;
+  display: inline;
+  padding: .25rem;
 }
