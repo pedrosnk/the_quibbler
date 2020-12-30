@@ -1,3 +1,3 @@
-defmodule TheQuibblerWeb.LayoutViewTest do
-  use TheQuibblerWeb.ConnCase, async: true
+defmodule ScrollWeb.LayoutViewTest do
+  use ScrollWeb.ConnCase, async: true
 end

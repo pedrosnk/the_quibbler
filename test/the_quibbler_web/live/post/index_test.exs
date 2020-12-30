@@ -1,8 +1,8 @@
-defmodule TheQuibblerWeb.PostLive.IndexTest do
-  use TheQuibblerWeb.ConnCase
+defmodule ScrollWeb.PostLive.IndexTest do
+  use ScrollWeb.ConnCase
   import Phoenix.LiveViewTest
 
-  alias TheQuibbler.Blog
+  alias Scroll.Blog
 
   test "renders post list messageg", %{conn: conn} do
     Blog.create_post(%{title: "Post 1", content: "Hello Post 1", content_html: "Hello Post 1"})

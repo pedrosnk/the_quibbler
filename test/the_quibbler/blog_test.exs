@@ -1,10 +1,10 @@
-defmodule TheQuibbler.BlogTest do
-  use TheQuibbler.DataCase
+defmodule Scroll.BlogTest do
+  use Scroll.DataCase
 
-  alias TheQuibbler.Blog
+  alias Scroll.Blog
 
   describe "posts" do
-    alias TheQuibbler.Blog.Post
+    alias Scroll.Blog.Post
 
     @valid_attrs %{
       content: "some content",

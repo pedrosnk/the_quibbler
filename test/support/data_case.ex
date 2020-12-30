@@ -1,4 +1,4 @@
-defmodule TheQuibbler.DataCase do
+defmodule Scroll.DataCase do
   @moduledoc """
   This module defines the setup for tests requiring
   access to the application's data layer.
@@ -16,20 +16,20 @@ defmodule TheQuibbler.DataCase do
 
   using do
     quote do
-      alias TheQuibbler.Repo
+      alias Scroll.Repo
 
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
-      import TheQuibbler.DataCase
+      import Scroll.DataCase
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(TheQuibbler.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Scroll.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(TheQuibbler.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Scroll.Repo, {:shared, self()})
     end
 
     :ok

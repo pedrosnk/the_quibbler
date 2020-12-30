@@ -1,4 +1,4 @@
-defmodule TheQuibblerWeb.ChannelCase do
+defmodule ScrollWeb.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -21,15 +21,15 @@ defmodule TheQuibblerWeb.ChannelCase do
       use Phoenix.ChannelTest
 
       # The default endpoint for testing
-      @endpoint TheQuibblerWeb.Endpoint
+      @endpoint ScrollWeb.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(TheQuibbler.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Scroll.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(TheQuibbler.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Scroll.Repo, {:shared, self()})
     end
 
     :ok

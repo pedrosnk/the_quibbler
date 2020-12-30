@@ -1,5 +1,5 @@
-defmodule TheQuibblerWeb.PageControllerTest do
-  use TheQuibblerWeb.ConnCase
+defmodule ScrollWeb.PageControllerTest do
+  use ScrollWeb.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get(conn, "/")

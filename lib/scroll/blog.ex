@@ -48,6 +48,7 @@ defmodule Scroll.Blog do
       nil
 
   """
+  @spec get_post(id :: pos_integer) :: %Post{} | nil
   def get_post(id), do: Repo.get(Post, id)
 
   @doc """

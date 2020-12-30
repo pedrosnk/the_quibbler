@@ -1,2 +1,2 @@
 ExUnit.start()
-Ecto.Adapters.SQL.Sandbox.mode(TheQuibbler.Repo, :manual)
+Ecto.Adapters.SQL.Sandbox.mode(Scroll.Repo, :manual)

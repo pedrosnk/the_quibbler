@@ -1,8 +1,8 @@
-defmodule TheQuibblerWeb.PostLive.NewTest do
-  use TheQuibblerWeb.ConnCase
+defmodule ScrollWeb.PostLive.NewTest do
+  use ScrollWeb.ConnCase
   import Phoenix.LiveViewTest
 
-  alias TheQuibbler.Blog
+  alias Scroll.Blog
 
   @markdown ~s(
   # H1 example
